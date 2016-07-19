@@ -11,10 +11,10 @@ import {WorkoutDetailsPage} from '../workout-details/workout-details';
 export class WorkoutsPage {
 
     static get parameters() {
-        return  [[NavController]], [[NavParams]], [[WorkoutService]];
+        return  [[NavController], [NavParams], [WorkoutService]];
     }
 
-    constructor(private workoutService: WorkoutService, private navController: NavController, private navParams: NavParams, private workouts: string) {
+    constructor(private navController: NavController, private navParams: NavParams, private workoutService: WorkoutService, private workouts: string) {
         this.navController = navController;
         this.workoutService = workoutService;
         this.workouts;
