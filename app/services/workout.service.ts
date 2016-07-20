@@ -28,4 +28,9 @@ export class WorkoutService {
         {headers:headers})
             .map(res => res.json());
     }
+
+    deleteWorkout(workoutId) {
+        return this.http.delete(this.workoutsUrl + '/' + workoutId + '?apiKey=' + this.apiKey)
+            .map(res => res.json());
+    }
 }

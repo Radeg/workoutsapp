@@ -18,6 +18,10 @@ export class WorkoutsPage {
         this.navController = navController;
         this.workoutService = workoutService;
         this.workouts;
+
+        this.workoutService.getWorkouts().subscribe(workouts => {
+            this.workouts = workouts;
+        })
     }
 
     ngOnInit() {

@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {NavController} from 'ionic-angular';
 import {WorkoutService} from '../../services/workout.service';
+import {WorkoutsPage} from '../workouts/workouts'
 
 @Component({
   templateUrl: 'build/pages/add-workout/add-workout.html',
@@ -8,10 +9,11 @@ import {WorkoutService} from '../../services/workout.service';
 })
 export class AddWorkoutPage {
   static get parameters() {
-    return [[WorkoutService]]
+    return [[NavController], [WorkoutService]];
   }
   
-  constructor(private workoutService: WorkoutService, private navController: NavController, private title: string, private note: string, private type: string) {
+  constructor(private navController: NavController, private workoutService: WorkoutService, private title: string, private note: string, private type: string, private result: any) {
+    this.navController = navController;
     this.workoutService = workoutService;
     this.title;
     this.note;
@@ -30,5 +32,7 @@ export class AddWorkoutPage {
     },
     err => console.log(err),
     () => console.log('Workout added'));
+
+    this.navController.setRoot(WorkoutsPage);
   }
 }
